@@ -3,6 +3,7 @@
 var playerName = window.prompt("What is your robot's name?");
 var playerHealth = 100;
 var playerAttack = 10;
+var playerMoney = 10;
 
 var enemyName = "Robert";
 var enemyHealth = 50;
@@ -34,9 +35,49 @@ if (playerHealth <= 0) {
     window.alert(playerName + " has died!");
 }
 else {
-    window.alert(playerNAme + " still as " + playerHealther + " health left.");
+    window.alert(playerName + " still as " + playerHealth + " health left.");
 }
 }
 
-fight();
+fight()
+var promptFight = window.prompt("Would you like to LIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
+// if player choses to fight, then fight
+if (promptFight === "fight"  ||  promptFight === "FIGHT")
+{    
+    enemyHealth = enemyHealth - playerAttack;
+
+    console.log(playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining.");
+    if (enemyHealth <= 0) {
+        window.alert(enemyName + " has died!");
+    }
+    else {
+        window.alert(enemyName + "still has " + enemyHealth + " health left.");
+    }
+
+    playerHealth = playerHealth - enemyAttack;
+
+    console.log(enemyName + " attacked " + playerName + ". " + playerName + ' now has ' + playerHealth + " health.");
+
+    if (playerHealth <= 0) {
+        window.alert(playerName + " has died!");
+    }
+    else {
+        window.alert(playerName + " still as " + playerHealth + " health left.");
+    }
+} else if (promptFight === "skip"  || promptFight === "SKIP") {
+
+    var confirmSkip = window.confirm("Are ou sure you'de like to quit?");
+    if (confirmSkip) {
+        window.alert(playerName + " has decided to skit this fight. Goodbye!");
+        playerMoney = playerMoney -2;
+    }
+    else {
+        fight();
+    }
+}
+else {
+    window.alert("you need to choose a valid option. Tray again!");
+}
+
+  
 
